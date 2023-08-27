@@ -14,19 +14,19 @@ inquirer
       type: 'input',
       name: 'textColor',
       message: 'Enter the text color (color keyword or hexadecimal number):',
-      default: 'black', 
+      default: 'Black', 
     },
     {
       type: 'list',
       name: 'shape',
       message: 'Select a shape for the logo:',
-      choices: ['circle', 'triangle', 'square'],
+      choices: ['Circle', 'Triangle', 'Square'],
     },
     {
       type: 'input',
       name: 'shapeColor',
       message: 'Enter the shape color (color keyword or hexadecimal number):',
-      default: 'blue', 
+      default: 'Blue', 
     },
   ])
   .then((answers) => {
@@ -38,7 +38,7 @@ inquirer
     saveSVGLogo(svgLogo);
 
     // Print the output message in the command line
-    console.log('Generated logo.svg');
+    console.log('Generated your logo!');
   })
   .catch((error) => console.error('Error occurred:', error));
 
@@ -51,19 +51,19 @@ function generateSVGLogo(text, textColor, shape, shapeColor) {
   switch (shape) {
     case 'circle':
       const circle = new Circle(100, shapeColor);
-      shapeSVG = circle.getSVG();
+      shapeSVG = generateCircleSVG(100, shapeColor);
       textX = 100; // Center the text horizontally within the circle
       textY = 100; // Center the text vertically within the circle
       break;
     case 'triangle':
       const triangle = new Triangle(100, 100, shapeColor);
-      shapeSVG = triangle.getSVG();
+      shapeSVG = generateTriangleSVG(100, 100, shapeColor);
       textX = 50; // Center the text horizontally within the triangle
       textY = 100; // Center the text vertically within the triangle
       break;
     case 'square':
       const square = new Square(100, shapeColor);
-      shapeSVG = square.getSVG();
+      shapeSVG = generateSquareSVG(100, shapeColor);
       textX = 50; // Center the text horizontally within the square
       textY = 100; // Center the text vertically within the square
       break;
@@ -82,8 +82,21 @@ function generateSVGLogo(text, textColor, shape, shapeColor) {
   return fullSVG;
 }
 
-  function saveSVGLogo(svgLogo) {
-    fs.writeFile('./examples/logo.svg', svgLogo, (err) => {
-      if (err) throw err;
-    });
-  }
+function generateCircleSVG(radius, color) {
+  return `<circle cx="${radius}" cy="${radius}" r="${radius}" fill="${color}" />`;
+}
+
+function generateTriangleSVG(base, height, color) {
+  const points = `0,${height} ${base / 2},0 ${base},${height}`;
+  return `<polygon points="${points}" fill="${color}" />`;
+}
+
+function generateSquareSVG(size, color) {
+  return `<rect width="${size}" height="${size}" fill="${color}" />`;
+}
+
+function saveSVGLogo(svgLogo) {
+  fs.writeFile('./examples/logo.svg', svgLogo, (err) => {
+    if (err) throw err;
+  });
+}
