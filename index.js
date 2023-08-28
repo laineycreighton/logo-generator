@@ -49,22 +49,22 @@ function generateSVGLogo(text, textColor, shape, shapeColor) {
   let textX, textY;
 
   switch (shape) {
-    case 'circle':
+    case 'Circle':
       const circle = new Circle(100, shapeColor);
       shapeSVG = generateCircleSVG(100, shapeColor);
       textX = 100; // Center the text horizontally within the circle
       textY = 100; // Center the text vertically within the circle
       break;
-    case 'triangle':
-      const triangle = new Triangle(100, 100, shapeColor);
-      shapeSVG = generateTriangleSVG(100, 100, shapeColor);
-      textX = 50; // Center the text horizontally within the triangle
-      textY = 100; // Center the text vertically within the triangle
+    case 'Triangle':
+      const triangle = new Triangle(300, 300, shapeColor);
+      shapeSVG = generateTriangleSVG(300, 300, shapeColor);
+      textX = 150; // Center the text horizontally within the triangle
+      textY = 150; // Center the text vertically within the triangle
       break;
-    case 'square':
-      const square = new Square(100, shapeColor);
-      shapeSVG = generateSquareSVG(100, shapeColor);
-      textX = 50; // Center the text horizontally within the square
+    case 'Square':
+      const square = new Square(200, shapeColor);
+      shapeSVG = generateSquareSVG(200, shapeColor);
+      textX = 100; // Center the text horizontally within the square
       textY = 100; // Center the text vertically within the square
       break;
     default:

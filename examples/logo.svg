@@ -1,10 +1,6 @@
 
     <svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">
-      
-        <svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="100" cy="100" r="100" fill="blue" />
-        </svg>
-      
-      <text x="100" y="100" font-size="40" fill="black" text-anchor="middle" alignment-baseline="middle">ANH</text>
+      <rect width="200" height="200" fill="Blue" />
+      <text x="100" y="100" font-size="40" fill="Black" text-anchor="middle" alignment-baseline="middle">ANH</text>
     </svg>
   
